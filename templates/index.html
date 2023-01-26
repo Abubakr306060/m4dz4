@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Hello!</h1>
+
+
+    {%for post in posts%}
+        <a href="{% url 'post-detail' post.id %}"></a>
+        {{ post.title }}
+        {{ post.content }}
+        
+    {% endfor %}
+<a href="{% url 'about-page' %}">о нас</a>
+<a href="{% url 'contacts-page' %}">контакты</a>
+
+{% for post in posts %}
+    <a href="{% url 'post-detail' post.id %}">{{ post.title }}</a>
+    <br>
+{% endfor %}
+{% endblock %}

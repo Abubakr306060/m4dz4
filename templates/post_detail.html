@@ -1,0 +1,16 @@
+{%  extends 'base.html'%}
+
+{%block content%}
+    <h1>{{ post.title}}</h1>
+    <p>{{ post.content}}</p>
+
+<form action="{% url 'post-delete' post.id %}" method="POST">{% csrf_token%}
+    <button type "submit">Удалить</button>
+</form>
+
+<a href="{% url 'about-page'%}">О нас</a>
+<a href="{% url 'contacts-page'%}">Контакт</a>
+<a href="{% url 'main-page'%}">На главную страницу</a>
+
+
+{%endblock%}
