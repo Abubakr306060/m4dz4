@@ -1,10 +1,39 @@
 {%  extends 'base.html'%}
 
 {%block content%}
-    <h1>{{ post.title}}</h1>
-    <p>{{ post.content}}</p>
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+    <h6>{{ post.created }}</h6>
+    <hr>
 
-<form action="{% url 'post-delete' post.id %}" method="POST">{% csrf_token%}
+
+    {%if post.post_comment.all%}
+        <h4>Комментарии:</h4>
+        <hr>
+    {% endif %}
+
+    {% for comment in post.post_comment.all %}
+        <h3>{{  comment.name  }}</h3>
+        <p>{{  comment.text  }}</p>
+        <h6>{{  comment.created  }}</h6>
+        <hr>
+
+        {%endfor%}
+
+
+    <form action"" method="post">{%  carf_token  %}
+        <label for="name">Введите имя</label>
+        <input type="text" name="name">
+        <hr><br>
+        <label for="text">Введите комментарий</label>
+        <input type="text" name="text">
+        <hr><br>
+
+        <input type="submit" name="Остановить комментарий"
+
+
+
+        <form action="{% url 'post-delete' post.id %}" method="POST">{% csrf_token%}
     <button type "submit">Удалить</button>
 </form>
 

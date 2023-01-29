@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 
 class IndexView(generic.ListView):
     model = Post
-    queryset = Post.object.filter(status=True)
+    queryset = Post.objects.filter(status=True)
     context_object_name = "posts"
     extra_context = {"title": "Главная страница"}
     template_name = "index.html"
